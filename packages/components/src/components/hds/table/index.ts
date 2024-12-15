@@ -289,6 +289,11 @@ export default class HdsTable extends Component<HdsTableSignature> {
     checkbox: HdsFormCheckboxBaseSignature['Element'],
     selectionKey?: string
   ): void {
+    console.log(
+      `[${this.args.caption}] Did insert row checkbox`,
+      selectionKey,
+      this._selectableRows.map((row) => row.selectionKey)
+    );
     if (selectionKey) {
       this._selectableRows.push({ selectionKey, checkbox });
     }
@@ -297,6 +302,11 @@ export default class HdsTable extends Component<HdsTableSignature> {
 
   @action
   willDestroyRowCheckbox(selectionKey?: string): void {
+    console.log(
+      `[${this.args.caption}] Will destroy row checkbox`,
+      selectionKey,
+      this._selectableRows.map((row) => row.selectionKey)
+    );
     this._selectableRows = this._selectableRows.filter(
       (row) => row.selectionKey !== selectionKey
     );
